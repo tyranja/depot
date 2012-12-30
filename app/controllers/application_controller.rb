@@ -11,4 +11,11 @@ class ApplicationController < ActionController::Base
     session[:cart_id] = cart.id
     cart
   end
+
+  def index
+    @count = increment_counter
+    @products  = Product.all
+    @time = Time.now
+    @shown_message = "You've been here #{@count} times" if increment_counter > 2
+  end
 end
